@@ -26,11 +26,15 @@ class _ClinicsScreenState extends State<ClinicsScreen> {
   }
 
   Future<void> _load() async {
-    setState(() { _loading = true; _error = null; });
+    setState(() {
+      _loading = true;
+      _error = null;
+    });
     try {
       final auth = AuthService.instance;
       if (auth.isPatient && auth.currentUserId != null) {
-        _works = await SupabaseService.instance.fetchWorksWithDetails(patientId: auth.currentUserId);
+        _works = await SupabaseService.instance
+            .fetchWorksWithDetails(patientId: auth.currentUserId);
       } else {
         _works = await SupabaseService.instance.fetchWorksWithDetails();
       }
@@ -49,7 +53,10 @@ class _ClinicsScreenState extends State<ClinicsScreen> {
           : _error != null
               ? ErrorView(message: _error!, onRetry: _load)
               : _works.isEmpty
-                  ? const EmptyView(message: 'No clinics found', icon: Icons.location_on_rounded)
+                  ? const EmptyView(
+                      message: 'No clinics found',
+                      icon: Icons.location_on_rounded,
+                    )
                   : RefreshIndicator(
                       onRefresh: _load,
                       child: ListView.builder(
@@ -61,7 +68,12 @@ class _ClinicsScreenState extends State<ClinicsScreen> {
                             margin: const EdgeInsets.only(bottom: 12),
                             child: InkWell(
                               borderRadius: BorderRadius.circular(12),
-                              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => WorkDetailScreen(work: w))),
+                              onTap: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => WorkDetailScreen(work: w),
+                                ),
+                              ),
                               child: Padding(
                                 padding: const EdgeInsets.all(16),
                                 child: Column(
@@ -70,16 +82,34 @@ class _ClinicsScreenState extends State<ClinicsScreen> {
                                     Row(
                                       children: [
                                         Expanded(
-                                          child: Text(w.title, style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 16)),
+                                          child: Text(
+                                            w.title,
+                                            style: const TextStyle(
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 16,
+                                            ),
+                                          ),
                                         ),
                                         if (w.workType != null)
                                           Container(
-                                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                                            decoration: BoxDecoration(
-                                              color: AppColors.primary.withValues(alpha: 0.1),
-                                              borderRadius: BorderRadius.circular(8),
+                                            padding: const EdgeInsets.symmetric(
+                                              horizontal: 8,
+                                              vertical: 4,
                                             ),
-                                            child: Text(w.workType!, style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w500, color: AppColors.primary)),
+                                            decoration: BoxDecoration(
+                                              color: AppColors.primary
+                                                  .withValues(alpha: 0.1),
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            child: Text(
+                                              w.workType!,
+                                              style: const TextStyle(
+                                                fontSize: 11,
+                                                fontWeight: FontWeight.w500,
+                                                color: AppColors.primary,
+                                              ),
+                                            ),
                                           ),
                                       ],
                                     ),
@@ -87,17 +117,37 @@ class _ClinicsScreenState extends State<ClinicsScreen> {
                                     if (w.doctorName != null)
                                       Row(
                                         children: [
-                                          const Icon(Icons.person_rounded, size: 14, color: AppColors.onSurfaceVariant),
+                                          const Icon(
+                                            Icons.person_rounded,
+                                            size: 14,
+                                            color: AppColors.onSurfaceVariant,
+                                          ),
                                           const SizedBox(width: 4),
-                                          Text(w.doctorName!, style: const TextStyle(color: AppColors.onSurfaceVariant, fontSize: 13)),
+                                          Text(
+                                            w.doctorName!,
+                                            style: const TextStyle(
+                                              color: AppColors.onSurfaceVariant,
+                                              fontSize: 13,
+                                            ),
+                                          ),
                                         ],
                                       ),
                                     if (w.formattedStartDate.isNotEmpty)
                                       Row(
                                         children: [
-                                          const Icon(Icons.calendar_today_rounded, size: 14, color: AppColors.onSurfaceVariant),
+                                          const Icon(
+                                            Icons.calendar_today_rounded,
+                                            size: 14,
+                                            color: AppColors.onSurfaceVariant,
+                                          ),
                                           const SizedBox(width: 4),
-                                          Text(w.formattedStartDate, style: const TextStyle(color: AppColors.onSurfaceVariant, fontSize: 13)),
+                                          Text(
+                                            w.formattedStartDate,
+                                            style: const TextStyle(
+                                              color: AppColors.onSurfaceVariant,
+                                              fontSize: 13,
+                                            ),
+                                          ),
                                         ],
                                       ),
                                   ],
@@ -107,6 +157,7 @@ class _ClinicsScreenState extends State<ClinicsScreen> {
                           );
                         },
                       ),
-                    );
+                    ),
+    );
   }
 }

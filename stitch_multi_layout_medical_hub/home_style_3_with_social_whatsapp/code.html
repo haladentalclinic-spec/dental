@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#737784",
+                    "on-secondary-fixed": "#00201c",
+                    "secondary-fixed-dim": "#4fdbc8",
+                    "on-secondary-container": "#006f64",
+                    "on-primary-fixed": "#001945",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed-variant": "#3f484d",
+                    "on-background": "#0b1c30",
+                    "on-primary-container": "#bcceff",
+                    "surface-bright": "#f8f9ff",
+                    "surface-variant": "#d3e4fe",
+                    "primary": "#003c90",
+                    "on-primary": "#ffffff",
+                    "inverse-on-surface": "#eaf1ff",
+                    "surface-container": "#e5eeff",
+                    "on-secondary": "#ffffff",
+                    "secondary-container": "#6df5e1",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface-variant": "#434653",
+                    "on-surface": "#0b1c30",
+                    "on-tertiary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed-variant": "#005048",
+                    "surface-container-highest": "#d3e4fe",
+                    "surface": "#f8f9ff",
+                    "tertiary-fixed": "#dbe4ea",
+                    "on-error-container": "#93000a",
+                    "secondary": "#006b5f",
+                    "primary-container": "#0f52ba",
+                    "on-tertiary-container": "#c6cfd5",
+                    "surface-tint": "#1d59c1",
+                    "tertiary-container": "#50595e",
+                    "inverse-surface": "#213145",
+                    "tertiary-fixed-dim": "#bfc8ce",
+                    "tertiary": "#394246",
+                    "secondary-fixed": "#71f8e4",
+                    "outline-variant": "#c3c6d5",
+                    "inverse-primary": "#b0c6ff",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-low": "#eff4ff",
+                    "on-primary-fixed-variant": "#00419c",
+                    "primary-fixed-dim": "#b0c6ff",
+                    "primary-fixed": "#d9e2ff",
+                    "error-container": "#ffdad6",
+                    "surface-container-high": "#dce9ff",
+                    "on-tertiary-fixed": "#141d21"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "80px",
+                    "margin-mobile": "16px",
+                    "xl": "64px",
+                    "lg": "40px",
+                    "base": "8px",
+                    "sm": "12px",
+                    "md": "24px",
+                    "xs": "4px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "body-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"]
+            },
+            "fontSize": {
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-tab-indicator {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface shadow-sm flex justify-between items-center px-margin-mobile h-16 w-full">
+<div class="flex items-center gap-base">
+<span class="material-symbols-outlined text-primary" data-icon="search">search</span>
+</div>
+<h1 class="font-headline-md text-headline-md text-primary">HealthCare</h1>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A professional close-up headshot of a friendly individual for a healthcare profile. The lighting is bright and airy, reflecting a clean clinical environment. The person has a warm, trustworthy expression. The background is a soft-focus medical office with subtle blue and white tones, maintaining a minimalist and corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0ziPDTlcqBiD4v0WkCbe5F98_8nGtxV0YiidLPGcNwgUWIN-3NkxekkD8VZmhGxWzU7E6rNXTe7hiNLsnZO-GO7GZVPCHS4SXkTXwWyV12O-IOeoIr_-ttpcXklNcd2xlBDvSgAvOEA9rv0wf3V3YF9EiuW_pTyhJmuAdrrQokUfwSnNHYK7noQhLTVCtm-2boMwK5NgM6u-rHPXYOXR9JgSe0roSBc4RwTRnK3kt0ra7BluasD5DpPc9-S1sPhq5yY6BJI7ywgI"/>
+</div>
+</header>
+<main class="pt-20 px-margin-mobile">
+<!-- 3-Banner Sliding Carousel -->
+<section class="relative w-full overflow-hidden rounded-xl mb-lg">
+<div class="flex transition-transform duration-500 ease-out h-48" id="carousel">
+<!-- Slide 1 -->
+<div class="min-w-full relative flex items-center bg-primary-container text-on-primary-container p-md overflow-hidden">
+<div class="z-10 w-2/3">
+<h2 class="font-title-lg text-title-lg mb-xs">24/7 Virtual Care</h2>
+<p class="font-body-sm text-body-sm opacity-90">Consult with top specialists from the comfort of your home.</p>
+<button class="mt-sm px-md py-xs bg-surface text-primary rounded-full font-label-md active:scale-95 transition-transform">Book Now</button>
+</div>
+<img alt="Virtual Care" class="absolute right-[-10%] top-0 h-full w-1/2 object-cover opacity-50 mix-blend-overlay" data-alt="A minimalist medical illustration of a doctor holding a digital tablet. The style is clean and corporate, featuring a palette of primary blue and white. The lighting is flat and modern, focusing on the precision of medical technology. The mood is professional, efficient, and calming, perfect for a healthcare app banner." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBViL9exApvp3VumkWAcYh7OB-Wjxfbh-UzpaJfeKO4axU1t6OpHslVsI_WLJ-I-szOv0LzUW7BXSB6DBJIHJUxpmkOS9AALwJNmW4mW36Ymu0XkOW88K8Z6KUheRPvUagrwtQFC857ICl6eHZ7m7lMjKlod6wzuYODpcBZMJxeKG2wGZOJyl1jtbvqUEcl-e9ZrIRnGQlPXADmVwJfaNtJZlFNANmOvhdIyZ6lQZOLKfzp85jn9xQZ255iOzjh52f-9ANPaser7hM"/>
+</div>
+<!-- Slide 2 -->
+<div class="min-w-full relative flex items-center bg-secondary text-on-secondary p-md overflow-hidden">
+<div class="z-10 w-2/3">
+<h2 class="font-title-lg text-title-lg mb-xs">Pharmacy Deals</h2>
+<p class="font-body-sm text-body-sm opacity-90">Get up to 20% off on monthly prescription refills.</p>
+<button class="mt-sm px-md py-xs bg-secondary-container text-on-secondary-container rounded-full font-label-md active:scale-95 transition-transform">Order Now</button>
+</div>
+<img alt="Pharmacy" class="absolute right-[-10%] top-0 h-full w-1/2 object-cover opacity-50 mix-blend-overlay" data-alt="Close up of organized medical pill bottles on a pristine white shelf. The aesthetic is extremely clean and clinical, using a soft teal and white color scheme. The lighting is bright and even, evoking a sense of pharmaceutical precision and organized healthcare management. Minimalist composition." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDysmBP2o38EaK8s7Vm-Qu2idAPL7AvE8FVUtQSV-HyaO5vaMYsxqODG1yvoP_fXvxLSKoFq8_Fx-SzYDPYYu9WSVzPHouFyy1K_D-MhPaOa-6aHDmX87ogpsj6Rx1TASwv6l93V8rcqhLdbthREHSePcmXtYZD8_SSRys7WxAiCfJKV5xJiMrKUNs7AxHNRrKFUXD6znslCjeTWfPKPYgC8xKCm6_eGQs-tBsOVF9jCS_oEje1HPmCCYtiAeWkFu4YdI3aWIJ45CI"/>
+</div>
+<!-- Slide 3 -->
+<div class="min-w-full relative flex items-center bg-tertiary-container text-on-tertiary-container p-md overflow-hidden">
+<div class="z-10 w-2/3">
+<h2 class="font-title-lg text-title-lg mb-xs">Wellness Check</h2>
+<p class="font-body-sm text-body-sm opacity-90">Schedule your annual physical exam today.</p>
+<button class="mt-sm px-md py-xs bg-surface text-tertiary rounded-full font-label-md active:scale-95 transition-transform">Schedule</button>
+</div>
+<img alt="Wellness" class="absolute right-[-10%] top-0 h-full w-1/2 object-cover opacity-50 mix-blend-overlay" data-alt="A serene and modern wellness center interior with soft natural lighting. The scene features minimalist furniture and a hint of greenery. The color palette is composed of soft greys, whites, and muted blue tones. The mood is peaceful and empathetic, focusing on holistic health and preventive care." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZl2gbzDFKkUurniOc2HLXJeq39lgXqY85yRJugJgDEVNkJMu68EdQ1w_QhISyQBhwYkZPLutv44C0vYgKeilhTLf37_wE36ozcDGm1LYazkF9r3an8An-a86YwfdcH9OOJBKqew-svOXV16vpyyrGU5ULLRx0FVZigwPDVAIoJuoGgNYDdga8v3lPCn5WJvZGrAMEAToLYZ26ckCrjpIfWNrSCSvvWvXauH45oEytwHe9jqku83LahfV9MK1gqnY1LzxbzGe2R-Q"/>
+</div>
+</div>
+<!-- Indicators -->
+<div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-xs">
+<div class="w-2 h-2 rounded-full bg-white opacity-100" id="dot-0"></div>
+<div class="w-2 h-2 rounded-full bg-white opacity-40" id="dot-1"></div>
+<div class="w-2 h-2 rounded-full bg-white opacity-40" id="dot-2"></div>
+</div>
+</section>
+<!-- Main Grid Layout -->
+<div class="flex gap-gutter">
+<!-- Left Sidebar Navigation -->
+<aside class="flex flex-col gap-md w-20 shrink-0">
+<div class="flex flex-col items-center gap-xs cursor-pointer group">
+<div class="w-14 h-14 rounded-2xl bg-error-container flex items-center justify-center text-on-error-container group-active:scale-90 transition-transform"><img alt="Doctor Profile" class="w-full h-full object-cover rounded-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0ziPDTlcqBiD4v0WkCbe5F98_8nGtxV0YiidLPGcNwgUWIN-3NkxekkD8VZmhGxWzU7E6rNXTe7hiNLsnZO-GO7GZVPCHS4SXkTXwWyV12O-IOeoIr_-ttpcXklNcd2xlBDvSgAvOEA9rv0wf3V3YF9EiuW_pTyhJmuAdrrQokUfwSnNHYK7noQhLTVCtm-2boMwK5NgM6u-rHPXYOXR9JgSe0roSBc4RwTRnK3kt0ra7BluasD5DpPc9-S1sPhq5yY6BJI7ywgI"/></div>
+<span class="font-label-md text-label-md text-on-surface-variant">SOS</span>
+</div>
+<div class="flex flex-col items-center gap-xs cursor-pointer group">
+<div class="w-14 h-14 rounded-2xl bg-secondary-container flex items-center justify-center text-on-secondary-container group-active:scale-90 transition-transform"><img alt="Doctor Profile" class="w-full h-full object-cover rounded-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0ziPDTlcqBiD4v0WkCbe5F98_8nGtxV0YiidLPGcNwgUWIN-3NkxekkD8VZmhGxWzU7E6rNXTe7hiNLsnZO-GO7GZVPCHS4SXkTXwWyV12O-IOeoIr_-ttpcXklNcd2xlBDvSgAvOEA9rv0wf3V3YF9EiuW_pTyhJmuAdrrQokUfwSnNHYK7noQhLTVCtm-2boMwK5NgM6u-rHPXYOXR9JgSe0roSBc4RwTRnK3kt0ra7BluasD5DpPc9-S1sPhq5yY6BJI7ywgI"/></div>
+<span class="font-label-md text-label-md text-on-surface-variant">Pharma</span>
+</div>
+<div class="flex flex-col items-center gap-xs cursor-pointer group">
+<div class="w-14 h-14 rounded-2xl bg-surface-container-high flex items-center justify-center text-primary group-active:scale-90 transition-transform"><img alt="Doctor Profile" class="w-full h-full object-cover rounded-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0ziPDTlcqBiD4v0WkCbe5F98_8nGtxV0YiidLPGcNwgUWIN-3NkxekkD8VZmhGxWzU7E6rNXTe7hiNLsnZO-GO7GZVPCHS4SXkTXwWyV12O-IOeoIr_-ttpcXklNcd2xlBDvSgAvOEA9rv0wf3V3YF9EiuW_pTyhJmuAdrrQokUfwSnNHYK7noQhLTVCtm-2boMwK5NgM6u-rHPXYOXR9JgSe0roSBc4RwTRnK3kt0ra7BluasD5DpPc9-S1sPhq5yY6BJI7ywgI"/></div>
+<span class="font-label-md text-label-md text-on-surface-variant">Lab</span>
+</div>
+<div class="flex flex-col items-center gap-xs cursor-pointer group">
+<div class="w-14 h-14 rounded-2xl bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed group-active:scale-90 transition-transform"><img alt="Doctor Profile" class="w-full h-full object-cover rounded-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0ziPDTlcqBiD4v0WkCbe5F98_8nGtxV0YiidLPGcNwgUWIN-3NkxekkD8VZmhGxWzU7E6rNXTe7hiNLsnZO-GO7GZVPCHS4SXkTXwWyV12O-IOeoIr_-ttpcXklNcd2xlBDvSgAvOEA9rv0wf3V3YF9EiuW_pTyhJmuAdrrQokUfwSnNHYK7noQhLTVCtm-2boMwK5NgM6u-rHPXYOXR9JgSe0roSBc4RwTRnK3kt0ra7BluasD5DpPc9-S1sPhq5yY6BJI7ywgI"/></div>
+<span class="font-label-md text-label-md text-on-surface-variant">Health</span>
+</div>
+</aside>
+<!-- Right Column Details -->
+<div class="flex-1 flex flex-col gap-md">
+<h3 class="font-title-lg text-title-lg text-on-surface">Health Categories</h3>
+<!-- Category Card 1 -->
+<div class="bg-surface-container-low rounded-xl p-md shadow-[0_4px_20px_rgba(15,82,186,0.03)] border border-outline-variant/30 active:scale-[0.98] transition-all">
+<div class="flex justify-between items-start mb-sm">
+<div class="p-xs bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">cardiology</span>
+</div>
+<span class="px-sm py-1 bg-primary text-on-primary rounded-full text-label-sm font-label-sm">Primary Care</span>
+</div>
+<h4 class="font-title-lg text-title-lg mb-xs">Cardiology</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-md leading-relaxed">Comprehensive heart health monitoring and expert specialist consultations.</p>
+<button class="w-full py-sm bg-primary text-on-primary rounded-lg font-label-md active:opacity-90 transition-opacity">View Specialists</button>
+</div>
+<!-- Category Card 2 -->
+<div class="bg-surface-container-low rounded-xl p-md shadow-[0_4px_20px_rgba(15,82,186,0.03)] border border-outline-variant/30 active:scale-[0.98] transition-all">
+<div class="flex justify-between items-start mb-sm">
+<div class="p-xs bg-secondary/10 rounded-lg">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">psychiatry</span>
+</div>
+<span class="px-sm py-1 bg-secondary text-on-secondary rounded-full text-label-sm font-label-sm">Therapy</span>
+</div>
+<h4 class="font-title-lg text-title-lg mb-xs">Mental Health</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-md leading-relaxed">Confidential support and wellness counseling for a balanced life.</p>
+<button class="w-full py-sm border border-secondary text-secondary rounded-lg font-label-md active:bg-secondary-container transition-colors">Find a Therapist</button>
+</div>
+<!-- Category Card 3 -->
+<div class="bg-surface-container-low rounded-xl p-md shadow-[0_4px_20px_rgba(15,82,186,0.03)] border border-outline-variant/30 active:scale-[0.98] transition-all mb-md">
+<div class="flex justify-between items-start mb-sm">
+<div class="p-xs bg-tertiary-container/10 rounded-lg">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">nutrition</span>
+</div>
+<span class="px-sm py-1 bg-tertiary text-on-tertiary rounded-full text-label-sm font-label-sm">Lifestyle</span>
+</div>
+<h4 class="font-title-lg text-title-lg mb-xs">Diet &amp; Nutrition</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-md leading-relaxed">Personalized meal plans and nutritional guidance for your fitness goals.</p>
+<button class="w-full py-sm bg-surface-container-highest text-on-surface rounded-lg font-label-md active:scale-95 transition-transform">Learn More</button>
+</div>
+</div>
+</div>
+</main><section class="px-margin-mobile pt-lg pb-4 text-center">
+<h2 class="font-title-lg text-title-lg text-on-surface mb-xs font-semibold">Stay Connected</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-md">Follow us for latest updates.</p>
+<div class="flex justify-center gap-md mb-lg">
+<a aria-label="Facebook" class="w-12 h-12 rounded-full bg-surface-container-high shadow-sm border border-outline-variant flex items-center justify-center text-primary hover:bg-primary-container hover:text-white transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="face">face</span>
+</a>
+<a aria-label="Instagram" class="w-12 h-12 rounded-full bg-surface-container-high shadow-sm border border-outline-variant flex items-center justify-center text-primary hover:bg-primary-container hover:text-white transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="photo_camera">photo_camera</span>
+</a>
+<a aria-label="X (Twitter)" class="w-12 h-12 rounded-full bg-surface-container-high shadow-sm border border-outline-variant flex items-center justify-center text-primary hover:bg-primary-container hover:text-white transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</a>
+<a aria-label="Share" class="w-12 h-12 rounded-full bg-surface-container-high shadow-sm border border-outline-variant flex items-center justify-center text-primary hover:bg-primary-container hover:text-white transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="share">share</span>
+</a>
+</div>
+<button class="w-full bg-[#12D069] text-white py-md rounded-xl font-bold flex items-center justify-center gap-md shadow-md active:scale-95 transition-transform mb-xl">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+            Connect on WhatsApp
+        </button>
+</section>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center py-2 px-margin-mobile pb-safe bg-surface shadow-lg z-50 rounded-t-xl">
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="medical_services">medical_services</span>
+<span class="font-label-md text-label-md">Services</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="medication_liquid">medication_liquid</span>
+<span class="font-label-md text-label-md">Doctors</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+<span class="font-label-md text-label-md">More</span>
+</a>
+</nav>
+<script>
+        // Simple Carousel Logic
+        let currentSlide = 0;
+        const totalSlides = 3;
+        const carousel = document.getElementById('carousel');
+        
+        function updateCarousel() {
+            carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+            for(let i=0; i<totalSlides; i++) {
+                const dot = document.getElementById(`dot-${i}`);
+                if(i === currentSlide) {
+                    dot.classList.remove('opacity-40');
+                    dot.classList.add('opacity-100');
+                } else {
+                    dot.classList.remove('opacity-100');
+                    dot.classList.add('opacity-40');
+                }
+            }
+        }
+
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        }, 5000);
+
+        // Micro-interactions for Sidebar
+        document.querySelectorAll('aside > div').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Visual feedback only for demo
+                btn.style.opacity = '0.7';
+                setTimeout(() => btn.style.opacity = '1', 100);
+            });
+        });
+    </script>
+</body></html>

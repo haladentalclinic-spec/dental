@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../services/supabase_service.dart';
+import '../services/auth_service.dart';
 import '../models/app_models.dart';
 import '../widgets/app_header.dart';
 import '../widgets/loading_view.dart';
@@ -31,8 +32,8 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
     try {
       final clinicMap = await _service.fetchClinic();
       if (clinicMap != null) {
-        final maps = await _service.fetchNotifications(clinicMap['id'] as String);
-        _items = maps.map(NotificationItem.fromMap).toList();
+        final maps = await _service.fetchNotifications(userId: AuthService.instance.currentUserId);
+        _items = maps.map((m) => NotificationItem.fromMap(m as Map<String, dynamic>)).toList();
       }
     } catch (e) {
       _error = 'Failed to load notifications: $e';
@@ -60,7 +61,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                           final item = _items[index];
                           final isHigh = item.priority == 'high';
                           final date = item.createdAt != null
-                              ? DateFormat('MMM dd, yyyy • hh:mm a').format(DateTime.tryParse(item.createdAt!) ?? DateTime.now())
+                              ? DateFormat('MMM dd, yyyy \u2022 hh:mm a').format(item.createdAt!)
                               : '';
                           return Card(
                             child: ListTile(

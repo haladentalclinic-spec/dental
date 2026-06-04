@@ -29,10 +29,10 @@ class _BannersScreenState extends State<BannersScreen> {
       _error = null;
     });
     try {
-      final clinicMap = await _service.fetchClinic();
-      if (clinicMap != null) {
-        final maps = await _service.fetchAllBanners(clinicMap['id'] as String);
-        _items = maps.map(BannerItem.fromMap).toList();
+      final clinic = await _service.fetchClinic();
+      if (clinic != null) {
+        final maps = await _service.fetchAllBanners();
+        _items = maps.map((m) => BannerItem.fromMap(m as Map<String, dynamic>)).toList();
       }
     } catch (e) {
       _error = 'Failed to load banners: $e';

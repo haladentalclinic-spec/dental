@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en" style=""><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-container": "#6df5e1",
+                    "on-secondary": "#ffffff",
+                    "secondary-fixed": "#71f8e4",
+                    "background": "#f8f9ff",
+                    "on-surface": "#0b1c30",
+                    "surface-variant": "#d3e4fe",
+                    "primary-container": "#0f52ba",
+                    "on-secondary-fixed": "#00201c",
+                    "outline-variant": "#c3c6d5",
+                    "surface-bright": "#f8f9ff",
+                    "on-background": "#0b1c30",
+                    "secondary-fixed-dim": "#4fdbc8",
+                    "inverse-on-surface": "#eaf1ff",
+                    "on-primary-container": "#bcceff",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-tint": "#1d59c1",
+                    "secondary": "#006b5f",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-tertiary-fixed": "#141d21",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-container": "#006f64",
+                    "on-error": "#ffffff",
+                    "inverse-surface": "#213145",
+                    "tertiary-fixed": "#dbe4ea",
+                    "surface": "#f8f9ff",
+                    "tertiary-container": "#50595e",
+                    "primary-fixed-dim": "#b0c6ff",
+                    "on-tertiary-fixed-variant": "#3f484d",
+                    "error-container": "#ffdad6",
+                    "surface-container-high": "#dce9ff",
+                    "on-primary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "tertiary-fixed-dim": "#bfc8ce",
+                    "on-surface-variant": "#434653",
+                    "on-primary-fixed-variant": "#00419c",
+                    "primary-fixed": "#d9e2ff",
+                    "outline": "#737784",
+                    "surface-container-low": "#eff4ff",
+                    "surface-dim": "#cbdbf5",
+                    "tertiary": "#394246",
+                    "on-tertiary-container": "#c6cfd5",
+                    "error": "#ba1a1a",
+                    "surface-container": "#e5eeff",
+                    "on-primary-fixed": "#001945",
+                    "primary": "#003c90",
+                    "on-secondary-fixed-variant": "#005048",
+                    "inverse-primary": "#b0c6ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "64px",
+                    "xs": "4px",
+                    "gutter": "24px",
+                    "margin-mobile": "16px",
+                    "md": "24px",
+                    "lg": "40px",
+                    "margin-desktop": "80px",
+                    "sm": "12px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { background-color: #f8f9ff; color: #0b1c30; -webkit-font-smoothing: antialiased; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-panel { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="font-body-md text-on-surface">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-[60] bg-surface shadow-sm px-margin-mobile h-16 flex justify-between items-center">
+<button class="p-2 hover:bg-surface-container-high transition-colors rounded-full">
+<span class="material-symbols-outlined">search</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-primary">HealthCare</h1>
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed overflow-hidden">
+<span class="material-symbols-outlined">person</span>
+</div>
+</header>
+<main class="pt-20 max-w-5xl mx-auto px-margin-mobile pb-48"><div class="mb-4">
+<button class="p-2 -ml-2 hover:bg-surface-container-high transition-colors rounded-full flex items-center gap-2 text-primary active:scale-95">
+<span class="material-symbols-outlined">arrow_back</span>
+<span class="font-label-md text-label-md">Back</span>
+</button>
+</div>
+<!-- Profile Header Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter mb-lg">
+<!-- Hero Card: Doctor Info -->
+<section class="md:col-span-8 bg-surface-container-low rounded-xl p-md shadow-[0_2px_10px_rgba(15,82,186,0.05)] flex flex-col md:flex-row gap-gutter transition-all duration-700 opacity-100 translate-y-0">
+<div class="relative group">
+<div class="w-full md:w-48 h-64 md:h-64 rounded-xl overflow-hidden shadow-lg">
+<img alt="Professional Doctor Portrait" class="w-full h-full object-cover" data-alt="A professional medical portrait of a confident male doctor in his late 40s wearing a clean white lab coat and a stethoscope. He is smiling warmly against a soft, bright, high-key clinic background with natural lighting. The image style is clean, corporate, and trustworthy, utilizing a palette of soft blues and whites to match a modern healthcare interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDljmPEBZ5y8NJFaFVGU7C7ljH3G-DKTL00Ef_g-dMVzhNdlBkOz55b61QeNr-A0x3zOfwwzW3jwJFKDJ-63BVA3sxzw8-HNaZhdIChNHx7yzRumoQW43laOVmIWTSBhi4tNlKjGHDrCPsMm-hXVdrxfWsKjPkHiJrDXdSJwvZZJgNPnYLIIOc0eWYHU0XXLZsek31x5bmqmogTmMnOf3eRMnB-gl-kDgqEv16Z_wGW_pig3l_JI4p0tFIhNKtG3Jw61lw7EdqF9s"/>
+</div>
+<div class="absolute bottom-2 right-2 bg-secondary text-on-secondary px-2 py-1 rounded-lg flex items-center gap-1 shadow-md">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-label-md text-label-md">Verified</span>
+</div>
+</div>
+<div class="flex-1 flex flex-col justify-center">
+<span class="text-primary font-label-md text-label-md tracking-wider">SENIOR CONSULTANT</span>
+<h2 class="font-headline-lg text-headline-lg mb-1">Dr. Jonathan Sterling</h2>
+<p class="text-secondary font-title-lg text-title-lg mb-4">Cardiology &amp; Internal Medicine</p>
+<div class="flex flex-wrap gap-sm">
+<div class="flex items-center gap-2 bg-surface-container-high px-3 py-2 rounded-lg">
+<span class="material-symbols-outlined text-primary">work_history</span>
+<span class="font-body-sm text-body-sm">15+ Years Exp.</span>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-high px-3 py-2 rounded-lg">
+<span class="material-symbols-outlined text-primary">star</span>
+<span class="font-body-sm text-body-sm">4.9 (1.2k Reviews)</span>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-high px-3 py-2 rounded-lg">
+<span class="material-symbols-outlined text-primary">language</span>
+<span class="font-body-sm text-body-sm">English, Spanish</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Quick Stats Card -->
+<aside class="md:col-span-4 grid grid-cols-2 md:grid-cols-1 gap-base">
+<div class="bg-primary text-on-primary p-md rounded-xl flex flex-col justify-center items-center text-center shadow-lg">
+<span class="font-headline-md text-headline-md">2.5k+</span>
+<span class="font-label-md text-label-md opacity-80">Patients Served</span>
+</div>
+<div class="bg-secondary-container text-on-secondary-container p-md rounded-xl flex flex-col justify-center items-center text-center shadow-md">
+<span class="font-headline-md text-headline-md">100%</span>
+<span class="font-label-md text-label-md opacity-80">Patient Care</span>
+</div>
+</aside>
+</div>
+<!-- Details Section -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Left Column: Biography & Specialties -->
+<div class="md:col-span-8 space-y-gutter">
+<!-- About Section -->
+<section class="bg-surface-container-low p-md rounded-xl border border-outline-variant/30 transition-all duration-700 opacity-100 translate-y-0">
+<h3 class="font-title-lg text-title-lg mb-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">person_search</span>
+                        About Doctor
+                    </h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                        Dr. Jonathan Sterling is a world-renowned cardiologist specializing in preventive cardiology and non-invasive cardiac imaging. With over 15 years of experience at the Metropolitan Health Institute, he has pioneered new approaches to cardiovascular wellness. He believes in a holistic, patient-centered approach that combines state-of-the-art medical technology with compassionate, empathetic care.
+                    </p>
+</section>
+<!-- Expertise Tags -->
+<section class="bg-surface-container-low p-md rounded-xl border border-outline-variant/30 transition-all duration-700 opacity-100 translate-y-0">
+<h3 class="font-title-lg text-title-lg mb-sm">Medical Specializations</h3>
+<div class="flex flex-wrap gap-2">
+<span class="bg-surface-variant text-on-primary-fixed-variant px-4 py-2 rounded-full font-label-md text-label-md">Hypertension Management</span>
+<span class="bg-surface-variant text-on-primary-fixed-variant px-4 py-2 rounded-full font-label-md text-label-md">Heart Valve Disease</span>
+<span class="bg-surface-variant text-on-primary-fixed-variant px-4 py-2 rounded-full font-label-md text-label-md">Arrhythmia Care</span>
+<span class="bg-surface-variant text-on-primary-fixed-variant px-4 py-2 rounded-full font-label-md text-label-md">Nutritional Counseling</span>
+</div>
+</section>
+<!-- Reviews Section -->
+<section class="transition-all duration-700 opacity-100 translate-y-0">
+<div class="flex justify-between items-center mb-sm">
+<h3 class="font-title-lg text-title-lg">Patient Reviews</h3>
+<button class="text-primary font-label-md text-label-md hover:underline">See All</button>
+</div>
+<div class="space-y-sm">
+<!-- Review Card 1 -->
+<div class="bg-white p-md rounded-xl shadow-sm border border-outline-variant/20">
+<div class="flex justify-between mb-2">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center font-bold text-primary">EM</div>
+<div>
+<p class="font-title-lg text-[16px]">Eleanor Murphy</p>
+<div class="flex text-secondary scale-75 origin-left">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-outline">2 days ago</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">"Dr. Sterling was extremely thorough and took the time to explain my diagnostic results in detail. I felt heard and well-cared for. Highly recommended for anyone looking for heart care."</p>
+</div>
+<!-- Review Card 2 -->
+<div class="bg-white p-md rounded-xl shadow-sm border border-outline-variant/20">
+<div class="flex justify-between mb-2">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center font-bold text-primary">JD</div>
+<div>
+<p class="font-title-lg text-[16px]">James Dawson</p>
+<div class="flex text-secondary scale-75 origin-left">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined">star</span>
+</div>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-outline">1 week ago</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">"Excellent professional. The staff was efficient and the waiting area is very clean. Dr. Sterling is very knowledgeable and empathetic."</p>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Schedule & Practice -->
+<div class="md:col-span-4 space-y-gutter">
+<!-- Working Hours -->
+<section class="bg-surface-container-low p-md rounded-xl border border-outline-variant/30 transition-all duration-700 opacity-100 translate-y-0">
+<h3 class="font-title-lg text-title-lg mb-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">calendar_month</span>
+                        Available Hours
+                    </h3>
+<ul class="space-y-2">
+<li class="flex justify-between font-body-sm text-body-sm border-b border-outline-variant/20 pb-2">
+<span class="">Monday - Friday</span>
+<span class="font-bold">09:00 - 17:00</span>
+</li>
+<li class="flex justify-between font-body-sm text-body-sm border-b border-outline-variant/20 pb-2">
+<span class="">Saturday</span>
+<span class="font-bold">10:00 - 14:00</span>
+</li>
+<li class="flex justify-between font-body-sm text-body-sm text-error">
+<span class="">Sunday</span>
+<span class="font-bold">Closed</span>
+</li>
+</ul>
+</section>
+<!-- Location Card -->
+<section class="bg-surface-container-low p-md rounded-xl border border-outline-variant/30 overflow-hidden transition-all duration-700 opacity-100 translate-y-0">
+<h3 class="font-title-lg text-title-lg mb-sm">Location</h3>
+<div class="h-32 rounded-lg bg-surface-variant mb-sm relative overflow-hidden">
+<img alt="Map View" class="w-full h-full object-cover grayscale brightness-90 contrast-75" data-location="New York City" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjI5ztyIL91-0VnYUn8e6kKVGljqFT8JMhiw17GmfQaxfejLtQ8LSMz4EEzHh_Llxcg-x-L9gS3ajMcG5msBRiDNKYp3nG354LL1CLcBfrx4PvpwXPzDT5R2K5rxuias0PKedcBc6laSogXI9tK_YOTgcikmuT_Iw5TAKDIKPlcxtG51QSfrbzNfNIc0CrNR9EcMzT6dhp7ShNjMH4GEeOiHO7ZO7GpqN5kGyQFh-Bmn5U_TUwxr0PqfDK-wt64fEvfCtBRzp1ikk"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-error text-4xl" style="font-variation-settings: 'FILL' 1;">location_on</span>
+</div>
+</div>
+<p class="font-label-md text-label-md text-primary">METROPOLITAN HEALTH CENTER</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">450 Medical Plaza, Suite 210<br/>Central Park East, NY 10021</p>
+</section>
+<!-- Consultation Fees -->
+<section class="bg-secondary-container/20 p-md rounded-xl border border-secondary/20 transition-all duration-700 opacity-100 translate-y-0">
+<div class="flex justify-between items-center">
+<div>
+<p class="font-label-md text-label-md text-secondary">CONSULTATION FEE</p>
+<p class="font-headline-md text-headline-md text-on-secondary-container">$120.00</p>
+</div>
+<span class="material-symbols-outlined text-secondary text-3xl">payments</span>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- Floating Action Bottom Bar -->
+<footer class="fixed left-0 w-full glass-panel border-t border-outline-variant/30 py-4 px-margin-mobile z-50 bottom-20">
+<div class="max-w-5xl mx-auto flex gap-4 items-center">
+<button class="w-14 h-14 rounded-full border border-primary flex items-center justify-center text-primary hover:bg-primary-fixed transition-colors active:scale-90 duration-200">
+<span class="material-symbols-outlined">chat</span>
+</button>
+<button class="flex-1 bg-primary text-on-primary h-14 rounded-xl flex items-center justify-center gap-2 font-title-lg text-title-lg shadow-lg hover:brightness-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined">calendar_today</span>
+                Book Appointment
+            </button>
+</div>
+</footer><nav class="fixed bottom-0 left-0 w-full bg-surface border-t border-outline-variant/30 h-20 flex items-center justify-around px-margin-mobile z-[60]"><button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-sm">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">medical_services</span>
+<span class="text-label-sm">Services</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">group</span>
+<span class="text-label-sm">Doctors</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">apartment</span>
+<span class="text-label-sm">Clinics</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">more_horiz</span>
+<span class="text-label-sm">More</span>
+</button></nav>
+<!-- Tab Bar for Mobile Navigation Shell (Suppressed as per task being detailed screen, but shown for consistency if top-level) -->
+<!-- Determined this as sub-page, navigation shell suppressed as per "The UX Goal" rules -->
+<script>
+        // Micro-interactions
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mouseenter', () => {
+                if(!btn.classList.contains('active:scale-95')) return;
+                btn.style.transition = 'transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            });
+        });
+
+        // Simple scroll reveal for sections
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-4');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-4');
+            observer.observe(section);
+        });
+    </script>
+</body></html>

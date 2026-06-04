@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Healthcare Services Directory</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#6df5e1",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#71f8e4",
+                        "background": "#f8f9ff",
+                        "on-surface": "#0b1c30",
+                        "surface-variant": "#d3e4fe",
+                        "primary-container": "#0f52ba",
+                        "on-secondary-fixed": "#00201c",
+                        "outline-variant": "#c3c6d5",
+                        "surface-bright": "#f8f9ff",
+                        "on-background": "#0b1c30",
+                        "secondary-fixed-dim": "#4fdbc8",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-primary-container": "#bcceff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#1d59c1",
+                        "secondary": "#006b5f",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-tertiary-fixed": "#141d21",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-container": "#006f64",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#213145",
+                        "tertiary-fixed": "#dbe4ea",
+                        "surface": "#f8f9ff",
+                        "tertiary-container": "#50595e",
+                        "primary-fixed-dim": "#b0c6ff",
+                        "on-tertiary-fixed-variant": "#3f484d",
+                        "error-container": "#ffdad6",
+                        "surface-container-high": "#dce9ff",
+                        "on-primary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#bfc8ce",
+                        "on-surface-variant": "#434653",
+                        "on-primary-fixed-variant": "#00419c",
+                        "primary-fixed": "#d9e2ff",
+                        "outline": "#737784",
+                        "surface-container-low": "#eff4ff",
+                        "surface-dim": "#cbdbf5",
+                        "tertiary": "#394246",
+                        "on-tertiary-container": "#c6cfd5",
+                        "error": "#ba1a1a",
+                        "surface-container": "#e5eeff",
+                        "on-primary-fixed": "#001945",
+                        "primary": "#003c90",
+                        "on-secondary-fixed-variant": "#005048",
+                        "inverse-primary": "#b0c6ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "64px",
+                        "xs": "4px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "md": "24px",
+                        "lg": "40px",
+                        "margin-desktop": "80px",
+                        "sm": "12px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface dark:bg-surface-dim shadow-sm flex justify-between items-center px-16 h-16 w-full md:px-margin-desktop">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-headline-md cursor-pointer active:scale-95 duration-150" data-icon="search">search</span>
+<h1 class="font-headline-md text-headline-md text-primary dark:text-primary-fixed-dim font-extrabold tracking-tight">HealthCare</h1>
+</div>
+<div class="flex items-center gap-base">
+<div class="hidden md:flex gap-md mr-base">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Home</a>
+<a class="font-label-md text-label-md text-primary font-bold" href="#">Services</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Doctors</a>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-fixed cursor-pointer hover:bg-surface-container-high transition-colors active:scale-95 duration-150">
+<img alt="User profile photo" class="w-full h-full object-cover" data-alt="A professional and clean studio headshot of a friendly person for a healthcare application profile. The lighting is soft and even, against a neutral light grey background. The individual is smiling warmly, conveying trust and empathy. The overall aesthetic is minimalist, corporate, and high-quality, matching a modern medical platform's visual identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYEZWz3k_Cwq0Jpo6lx5iQDmLPpdOIQJcdxcP47fZqWnfFFU6zxyR7pXi-G_kQss6-pElMvGCCiMn5XGUTFT4CDekvB9OZHSubQFc9JZ1H0FBJmsCTH7yutJzRh40VROMobWBT_NZqa5sr5yRmuBRpGYJ8t6Wx55lwQi8aLny2B6eNNXjVAVje2GzCASalYk9L2d_2TMq7yCGUsw_KwB_sGR0KKGZhO9jS-8shzl-wjvgC9QcZFqFb4uo4AYfrpUT6fw6wHWZ6WzA"/>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto"><div class="mb-md flex items-center"><button class="flex items-center gap-xs text-primary hover:bg-primary-container/10 p-2 rounded-lg transition-colors active:scale-95"><span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span><span class="font-label-md text-label-md">Back</span></button></div>
+<!-- Search Section -->
+<section class="mb-lg">
+<div class="max-w-3xl mx-auto text-center mb-base">
+<h2 class="font-headline-lg text-headline-lg mb-xs text-on-surface">Find a Service</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Browse through our comprehensive range of specialized medical care.</p>
+</div>
+<div class="relative max-w-2xl mx-auto mt-base group" style="opacity: 1; transform: translateY(0px); transition: 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors" data-icon="search">search</span>
+<input class="w-full pl-12 pr-4 py-4 bg-surface-container-low border border-outline-variant rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none font-body-md text-body-md shadow-sm" placeholder="Search cardiology, pediactrics, labs..." type="text"/>
+</div>
+</section>
+<!-- Promotional Banner -->
+<section class="mb-lg">
+<div class="relative overflow-hidden rounded-xl bg-primary-container text-on-primary-container p-md md:p-lg flex flex-col md:flex-row items-center gap-md">
+<div class="flex-1 z-10">
+<span class="inline-block px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-md text-label-md mb-base">HEALTH ALERT</span>
+<h3 class="font-headline-md text-headline-md font-bold mb-xs">Annual Flu Vaccination Now Available</h3>
+<p class="font-body-md text-body-md opacity-90 mb-md max-w-lg">Protect yourself and your loved ones this season. Walk-ins available at all pediatric and general clinics.</p>
+<button class="bg-surface text-primary font-label-md text-label-md px-xl py-3 rounded-lg hover:bg-surface-container-high transition-all active:scale-95">Book Injection</button>
+</div>
+<div class="w-full md:w-1/3 h-48 md:h-64 relative z-0">
+<img alt="Vaccination background" class="absolute inset-0 w-full h-full object-cover rounded-lg mix-blend-overlay opacity-50" data-alt="A clean and clinical minimalist photography of medical supplies on a blue surface. The shot features a sterile syringe and a glass vial, illuminated by bright, soft studio lighting that emphasizes cleanliness and professional healthcare standards. The palette uses deep primary blues and soft teals to create a sense of trust and precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJKh0RbQQJUvkJglQWfHGaYnHiq-3DxgyHef1mVo4EagotgDX5Mhyu2T6aiVDr3D-JVhTYUOwp3cIkYZMmndDA5nsX9XfvhIe6Ke2gAK2MYC_edG280W_ULXOdwQWki8iqVjIChFH41g9rWv71RzR-kNyeo1wNMOqiYm4roNVZ4N3V5yGVNn8zcNXRM9LUGdtJYkqVw6BikF2Konrakk-bHqNUdygSvtPh_Ij7h3S4xSVwOtW8gSNso9-rFe71geLHZHAyU_XF8ow"/>
+</div>
+</div>
+</section>
+<!-- Categories Grid (Bento Style) -->
+<section class="grid grid-cols-2 md:grid-cols-4 gap-md md:gap-gutter">
+<!-- Cardiology - Large Card -->
+<div class="col-span-2 row-span-1 md:row-span-2 group cursor-pointer" style="opacity: 1; transform: translateY(0px); transition: 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);">
+<div class="h-full p-md md:p-lg rounded-xl bg-white shadow-[0_2px_10px_rgba(15,82,186,0.05)] border border-outline-variant flex flex-col justify-between hover:shadow-lg transition-all hover:border-primary">
+<div class="flex justify-between items-start">
+<div class="p-4 rounded-full bg-surface-container-high text-primary">
+<span class="material-symbols-outlined text-4xl" data-icon="cardiology">cardiology</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="arrow_outward">arrow_outward</span>
+</div>
+<div class="mt-xl">
+<h4 class="font-title-lg text-title-lg text-on-surface font-bold">Cardiology</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-xs">Advanced heart care including diagnostics, surgery, and rehabilitation services.</p>
+<div class="flex gap-xs mt-base">
+<span class="px-2 py-1 rounded bg-secondary-container/30 text-on-secondary-container font-label-sm text-label-sm">8 Specialists</span>
+<span class="px-2 py-1 rounded bg-secondary-container/30 text-on-secondary-container font-label-sm text-label-sm">24/7 ER</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Pediatrics -->
+<div class="group cursor-pointer" style="opacity: 1; transform: translateY(0px); transition: 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);">
+<div class="h-full p-md rounded-xl bg-white shadow-[0_2px_10px_rgba(15,82,186,0.05)] border border-outline-variant flex flex-col gap-md hover:shadow-lg transition-all hover:border-primary">
+<div class="p-3 w-fit rounded-full bg-secondary-container text-on-secondary-container">
+<span class="material-symbols-outlined text-2xl" data-icon="child_care">child_care</span>
+</div>
+<div>
+<h4 class="font-title-lg text-title-lg text-on-surface font-bold">Pediatrics</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Child-friendly care from birth to adolescence.</p>
+</div>
+</div>
+</div>
+<!-- Neurology -->
+<div class="group cursor-pointer" style="opacity: 1; transform: translateY(0px); transition: 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);">
+<div class="h-full p-md rounded-xl bg-white shadow-[0_2px_10px_rgba(15,82,186,0.05)] border border-outline-variant flex flex-col gap-md hover:shadow-lg transition-all hover:border-primary">
+<div class="p-3 w-fit rounded-full bg-tertiary-fixed text-on-tertiary-fixed">
+<span class="material-symbols-outlined text-2xl" data-icon="neurology">neurology</span>
+</div>
+<div>
+<h4 class="font-title-lg text-title-lg text-on-surface font-bold">Neurology</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Specialized brain and nervous system care.</p>
+</div>
+</div>
+</div>
+<!-- Dermatology -->
+<div class="group cursor-pointer" style="opacity: 1; transform: translateY(0px); transition: 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);">
+<div class="h-full p-md rounded-xl bg-white shadow-[0_2px_10px_rgba(15,82,186,0.05)] border border-outline-variant flex flex-col gap-md hover:shadow-lg transition-all hover:border-primary">
+<div class="p-3 w-fit rounded-full bg-surface-container-high text-primary">
+<span class="material-symbols-outlined text-2xl" data-icon="dermatology">dermatology</span>
+</div>
+<div>
+<h4 class="font-title-lg text-title-lg text-on-surface font-bold">Dermatology</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Skin treatments and aesthetic consultations.</p>
+</div>
+</div>
+</div>
+<!-- Orthopedics -->
+<div class="group cursor-pointer" style="opacity: 1; transform: translateY(0px); transition: 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);">
+<div class="h-full p-md rounded-xl bg-white shadow-[0_2px_10px_rgba(15,82,186,0.05)] border border-outline-variant flex flex-col gap-md hover:shadow-lg transition-all hover:border-primary">
+<div class="p-3 w-fit rounded-full bg-primary-fixed text-on-primary-fixed">
+<span class="material-symbols-outlined text-2xl" data-icon="orthopedics">orthopedics</span>
+</div>
+<div>
+<h4 class="font-title-lg text-title-lg text-on-surface font-bold">Orthopedics</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Bone, joint, and spinal health expertise.</p>
+</div>
+</div>
+</div>
+<!-- Radiology - Wide -->
+<div class="col-span-2 group cursor-pointer" style="opacity: 1; transform: translateY(0px); transition: 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);">
+<div class="h-full p-md rounded-xl bg-surface-container-low shadow-[0_2px_10px_rgba(15,82,186,0.05)] border border-outline-variant flex items-center justify-between hover:shadow-lg transition-all hover:border-primary">
+<div class="flex gap-md items-center">
+<div class="p-4 rounded-xl bg-white text-primary">
+<span class="material-symbols-outlined text-3xl" data-icon="radiology">radiology</span>
+</div>
+<div>
+<h4 class="font-title-lg text-title-lg text-on-surface font-bold">Radiology &amp; Imaging</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">MRI, CT Scan, and Digital X-Ray services.</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary pr-md" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</section>
+<!-- Quick Access Section -->
+<section class="mt-lg">
+<h3 class="font-headline-md text-headline-md mb-md text-on-surface">Emergency &amp; Urgent Care</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="flex items-center gap-md p-md rounded-xl bg-error-container text-on-error-container border border-error/10">
+<div class="p-4 rounded-full bg-white text-error">
+<span class="material-symbols-outlined text-3xl" data-icon="emergency">emergency</span>
+</div>
+<div class="flex-1">
+<h4 class="font-title-lg text-title-lg font-bold">Emergency Center</h4>
+<p class="font-body-sm text-body-sm opacity-80">Immediate care for life-threatening conditions. Open 24/7.</p>
+</div>
+<button class="bg-error text-white p-3 rounded-full shadow-lg active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="call">call</span>
+</button>
+</div>
+<div class="flex items-center gap-md p-md rounded-xl bg-surface shadow-sm border border-outline-variant">
+<div class="p-4 rounded-full bg-secondary-container text-on-secondary-container">
+<span class="material-symbols-outlined text-3xl" data-icon="videocam">videocam</span>
+</div>
+<div class="flex-1">
+<h4 class="font-title-lg text-title-lg font-bold">Virtual Consultation</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Connect with a GP within 15 minutes from home.</p>
+</div>
+<button class="text-primary font-label-md text-label-md px-4 py-2 border border-primary rounded-lg hover:bg-primary-container hover:text-white transition-all">Start Call</button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center py-2 px-margin-mobile pb-safe bg-surface dark:bg-surface-container-low shadow-[0_-2px_10px_rgba(15,82,186,0.05)] z-50 rounded-t-xl"><a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline py-1 px-4 hover:bg-surface-container-highest transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container dark:bg-on-secondary-fixed-variant text-on-secondary-container dark:text-secondary-fixed-dim rounded-full px-4 py-1 active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="medical_services">medical_services</span>
+<span class="font-label-md text-label-md">Services</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline py-1 px-4 hover:bg-surface-container-highest transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="medication_liquid">medication_liquid</span>
+<span class="font-label-md text-label-md">Doctors</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline py-1 px-4 hover:bg-surface-container-highest transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="location_on">location_on</span>
+<span class="font-label-md text-label-md">Clinics</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline py-1 px-4 hover:bg-surface-container-highest transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+<span class="font-label-md text-label-md">More</span>
+</a></nav>
+<!-- NavigationDrawer (Hidden by default) -->
+<div class="fixed inset-0 bg-black/40 z-[55] hidden opacity-0 transition-opacity duration-300" id="drawer-overlay"></div>
+<aside class="fixed inset-y-0 right-0 w-80 z-[60] bg-surface dark:bg-surface-container-low border-l border-outline-variant shadow-xl translate-x-full transition-transform duration-300 flex flex-col h-full p-md" id="drawer">
+<div class="flex items-center gap-md mb-lg">
+<div class="w-16 h-16 rounded-full overflow-hidden">
+<img alt="User avatar" class="w-full h-full object-cover" data-alt="A clean, clinical portrait of a male user for a medical application. The lighting is soft and professional, showing a kind expression against a serene light blue background. The photo high resolution and minimalist, emphasizing modern corporate medical aesthetics." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDs-L5pms5kM5A70FRcZ_Ap75ZS8BS-ttlpq9h-p_r90QjSnrUOhmZvWfvxcmOaxrT2fH1C8ehZjMxdVr0FyG14B8dZgR6u0Iox6Oueup_0R9dyYM2IjGVZy3GDzd40Tk2Aw7YGVL-yIpOnASvI_Ro-o1OUrejUqBvfK7pYd-dA1BLHGah7POKStztFr5eT7UnIaH4b7zcfG6xzSd-FDakz3PKGqkCmriz0BFC3GY6dZA5RSnlJoyo8IhyrRhXNpGo9s_Whg_d4OcU"/>
+</div>
+<div>
+<h4 class="font-body-md text-body-md font-bold text-on-surface">Alex Johnson</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Patient ID: #4421</p>
+<span class="font-label-sm text-label-sm text-primary font-bold">Premium Member</span>
+</div>
+</div>
+<nav class="flex flex-col gap-xs flex-1">
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-body-md text-body-md">Profile</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="dark_mode">dark_mode</span>
+<span class="font-body-md text-body-md">Appearance</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="translate">translate</span>
+<span class="font-body-md text-body-md">Language</span>
+</a>
+<div class="h-px bg-outline-variant my-base"></div>
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="info">info</span>
+<span class="font-body-md text-body-md">About Us</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="contact_support">contact_support</span>
+<span class="font-body-md text-body-md">Contact Us</span>
+</a>
+</nav>
+<button class="mt-auto py-3 bg-surface-container-high rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-variant active:opacity-80 transition-all" id="close-drawer">Close</button>
+</aside>
+<script>
+        const avatar = document.querySelector('img[alt="User profile photo"]').parentElement;
+        const drawer = document.getElementById('drawer');
+        const overlay = document.getElementById('drawer-overlay');
+        const closeBtn = document.getElementById('close-drawer');
+
+        function toggleDrawer() {
+            drawer.classList.toggle('translate-x-full');
+            overlay.classList.toggle('hidden');
+            setTimeout(() => overlay.classList.toggle('opacity-0'), 10);
+        }
+
+        avatar.addEventListener('click', toggleDrawer);
+        overlay.addEventListener('click', toggleDrawer);
+        closeBtn.addEventListener('click', toggleDrawer);
+
+        // Simple animation for service cards
+        const cards = document.querySelectorAll('.group');
+        cards.forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                card.style.transition = 'all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1)';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 100 + (index * 50));
+        });
+    </script>
+</body></html>

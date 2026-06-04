@@ -31,8 +31,8 @@ class _LocationsScreenState extends State<LocationsScreen> {
     try {
       final clinicMap = await _service.fetchClinic();
       if (clinicMap != null) {
-        final maps = await _service.fetchLocations(clinicMap['id'] as String);
-        _items = maps.map(LocationItem.fromMap).toList();
+        final maps = await _service.fetchLocations();
+        _items = maps.map((m) => LocationItem.fromMap(m as Map<String, dynamic>)).toList();
       }
     } catch (e) {
       _error = 'Failed to load locations: $e';

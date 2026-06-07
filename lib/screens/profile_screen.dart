@@ -4,7 +4,6 @@ import '../services/supabase_service.dart';
 import '../services/auth_service.dart';
 import '../utils/theme.dart';
 import '../widgets/app_header.dart';
-import '../widgets/loading_view.dart';
 import '../models/app_models.dart' as models;
 import 'login_screen.dart';
 
@@ -161,7 +160,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               // Refresh by reloading session
               await AuthService.instance.loadSession();
               setState(() {});
-              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Profile updated')));
+              ScaffoldMessenger.of(ctx).showSnackBar(const SnackBar(content: Text('Profile updated')));
             },
             child: const Text('Save'),
           ),

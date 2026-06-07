@@ -4,7 +4,6 @@ import '../services/supabase_service.dart';
 import '../services/auth_service.dart';
 import '../models/app_models.dart';
 import '../utils/theme.dart';
-import '../widgets/app_header.dart';
 import '../widgets/loading_view.dart';
 import '../widgets/banner_carousel.dart';
 import 'notifications_screen.dart';

@@ -50,9 +50,14 @@ class _MainScaffoldState extends State<MainScaffold> {
   }
 }
 
-class _MoreScreen extends StatelessWidget {
+class _MoreScreen extends StatefulWidget {
   const _MoreScreen();
 
+  @override
+  State<_MoreScreen> createState() => _MoreScreenState();
+}
+
+class _MoreScreenState extends State<_MoreScreen> {
   @override
   Widget build(BuildContext context) {
     final isLoggedIn = AuthService.instance.isLoggedIn;

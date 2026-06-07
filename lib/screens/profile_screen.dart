@@ -5,6 +5,7 @@ import '../services/auth_service.dart';
 import '../utils/theme.dart';
 import '../widgets/app_header.dart';
 import '../models/app_models.dart' as models;
+import './signup_screen.dart';
 import 'login_screen.dart';
 
 class ProfileScreen extends StatefulWidget {

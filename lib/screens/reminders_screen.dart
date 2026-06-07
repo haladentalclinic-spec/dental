@@ -25,6 +25,13 @@ class _RemindersScreenState extends State<RemindersScreen> {
   Future<void> _load() async {
     setState(() { _loading = true; _error = null; });
     try {
+      if (AuthService.instance.currentUserId == null) {
+        setState(() {
+          _error = 'Please sign in to view reminders';
+          _loading = false;
+        });
+        return;
+      }
       _items = await SupabaseService.instance.fetchReminders(patientId: AuthService.instance.currentUserId);
     } catch (e) {
       _error = 'Failed to load reminders: $e';

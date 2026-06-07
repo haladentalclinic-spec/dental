@@ -30,7 +30,13 @@ class _ChatListScreenState extends State<ChatListScreen> {
     setState(() { _loading = true; _error = null; });
     try {
       final userId = _auth.currentUserId;
-      if (userId == null) { setState(() { _error = 'User not logged in'; _loading = false; }); return; }
+      if (userId == null) { 
+        setState(() { 
+          _error = 'Please sign in to view messages'; 
+          _loading = false; 
+        }); 
+        return; 
+      }
       final list = await _supabase.fetchConversationList(userId);
       setState(() { _conversations = list; _loading = false; });
     } catch (e) {

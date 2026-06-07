@@ -21,7 +21,31 @@ class _ProfileScreenState extends State<ProfileScreen> {
     if (user == null) {
       return Scaffold(
         appBar: const AppHeader(title: 'Profile'),
-        body: const Center(child: Text('Not logged in')),
+        body: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(32),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(Icons.person_outline_rounded, size: 64, color: Theme.of(context).colorScheme.onSurfaceVariant.withValues(alpha: 0.5)),
+                const SizedBox(height: 16),
+                Text('Please sign in to view your profile', style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Theme.of(context).colorScheme.onSurfaceVariant), textAlign: TextAlign.center),
+                const SizedBox(height: 24),
+                ElevatedButton.icon(
+                  onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const LoginScreen())),
+                  icon: const Icon(Icons.login_rounded),
+                  label: const Text('Sign In'),
+                ),
+                const SizedBox(height: 12),
+                OutlinedButton.icon(
+                  onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const SignupScreen())),
+                  icon: const Icon(Icons.person_add_rounded),
+                  label: const Text('Create Account'),
+                ),
+              ],
+            ),
+          ),
+        ),
       );
     }
     return Scaffold(

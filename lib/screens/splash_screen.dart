@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../services/auth_service.dart';
 import '../widgets/app_logo.dart';
-import 'login_screen.dart';
 import 'main_scaffold.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -23,17 +22,11 @@ class _SplashScreenState extends State<SplashScreen> {
   Future<void> _go() async {
     await Future.delayed(const Duration(milliseconds: 1500));
     if (!mounted) return;
-    if (AuthService.instance.isLoggedIn) {
-      Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (_) => const MainScaffold()),
-        (route) => false,
-      );
-    } else {
-      Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (_) => const LoginScreen()),
-        (route) => false,
-      );
-    }
+    // Always go to home screen, login/register is optional
+    Navigator.of(context).pushAndRemoveUntil(
+      MaterialPageRoute(builder: (_) => const MainScaffold()),
+      (route) => false,
+    );
   }
 
   @override

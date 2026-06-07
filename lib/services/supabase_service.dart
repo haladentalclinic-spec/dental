@@ -42,6 +42,14 @@ class SupabaseService {
   void setClinicId(String id) => _currentClinicId = id;
 
   Future<models.User?> signUp(Map<String, dynamic> userData) async {
+    // Ensure clinic_id is set - fetch an active clinic if not provided
+    if (userData['clinic_id'] == null) {
+      final clinic = await fetchClinic();
+      if (clinic != null) {
+        userData['clinic_id'] = clinic.id;
+        _currentClinicId = clinic.id;
+      }
+    }
     if (_currentClinicId != null && userData['clinic_id'] == null) {
       userData['clinic_id'] = _currentClinicId;
     }

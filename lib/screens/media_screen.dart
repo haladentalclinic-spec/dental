@@ -27,6 +27,13 @@ class _MediaScreenState extends State<MediaScreen> {
   Future<void> _loadMedia() async {
     setState(() { _loading = true; _error = null; });
     try {
+      if (AuthService.instance.currentUserId == null) {
+        setState(() {
+          _error = 'Please sign in to view media';
+          _loading = false;
+        });
+        return;
+      }
       final list = await _supabase.fetchMedia();
       // Filter only image-type items
       final images = list.where((m) => m.isImage).toList();

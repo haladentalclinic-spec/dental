@@ -15,6 +15,7 @@ import 'locations_screen.dart';
 import 'clinic_info_screen.dart';
 import 'settings_screen.dart';
 import 'login_screen.dart';
+import 'signup_screen.dart';
 
 class MainScaffold extends StatefulWidget {
   const MainScaffold({super.key});
@@ -54,7 +55,7 @@ class _MoreScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AuthService.instance.currentUser;
+    final isLoggedIn = AuthService.instance.isLoggedIn;
     return Scaffold(
       appBar: AppBar(
         title: const Text('More'),
@@ -65,36 +66,38 @@ class _MoreScreen extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          _MenuTile(
-            icon: Icons.person_rounded,
-            color: AppColors.primary,
-            title: 'Profile',
-            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const ProfileScreen())),
-          ),
-          _MenuTile(
-            icon: Icons.notifications_rounded,
-            color: Colors.orange,
-            title: 'Notifications',
-            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const NotificationsScreen())),
-          ),
-          _MenuTile(
-            icon: Icons.alarm_rounded,
-            color: Colors.teal,
-            title: 'Reminders',
-            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const RemindersScreen())),
-          ),
-          _MenuTile(
-            icon: Icons.chat_rounded,
-            color: AppColors.secondary,
-            title: 'Chat',
-            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const ChatListScreen())),
-          ),
-          _MenuTile(
-            icon: Icons.photo_library_rounded,
-            color: Colors.purple,
-            title: 'Media Gallery',
-            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const MediaScreen())),
-          ),
+          if (isLoggedIn) ...[
+            _MenuTile(
+              icon: Icons.person_rounded,
+              color: AppColors.primary,
+              title: 'Profile',
+              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const ProfileScreen())),
+            ),
+            _MenuTile(
+              icon: Icons.notifications_rounded,
+              color: Colors.orange,
+              title: 'Notifications',
+              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const NotificationsScreen())),
+            ),
+            _MenuTile(
+              icon: Icons.alarm_rounded,
+              color: Colors.teal,
+              title: 'Reminders',
+              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const RemindersScreen())),
+            ),
+            _MenuTile(
+              icon: Icons.chat_rounded,
+              color: AppColors.secondary,
+              title: 'Chat',
+              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const ChatListScreen())),
+            ),
+            _MenuTile(
+              icon: Icons.photo_library_rounded,
+              color: Colors.purple,
+              title: 'Media Gallery',
+              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const MediaScreen())),
+            ),
+          ],
           _MenuTile(
             icon: Icons.location_on_rounded,
             color: Colors.red,
@@ -114,27 +117,50 @@ class _MoreScreen extends StatelessWidget {
             onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const SettingsScreen())),
           ),
           const SizedBox(height: 32),
-          SizedBox(
-            width: double.infinity,
-            child: OutlinedButton.icon(
-              onPressed: () async {
-                await AuthService.instance.signOut();
-                if (context.mounted) {
-                  Navigator.of(context).pushAndRemoveUntil(
-                    MaterialPageRoute(builder: (_) => const LoginScreen()),
-                    (route) => false,
-                  );
-                }
-              },
-              icon: const Icon(Icons.logout_rounded),
-              label: const Text('Sign Out'),
-              style: OutlinedButton.styleFrom(
-                foregroundColor: AppColors.error,
-                side: const BorderSide(color: AppColors.error),
-                padding: const EdgeInsets.symmetric(vertical: 14),
+          if (isLoggedIn)
+            SizedBox(
+              width: double.infinity,
+              child: OutlinedButton.icon(
+                onPressed: () async {
+                  await AuthService.instance.signOut();
+                  if (context.mounted) {
+                    setState(() {});
+                  }
+                },
+                icon: const Icon(Icons.logout_rounded),
+                label: const Text('Sign Out'),
+                style: OutlinedButton.styleFrom(
+                  foregroundColor: AppColors.error,
+                  side: const BorderSide(color: AppColors.error),
+                  padding: const EdgeInsets.symmetric(vertical: 14),
+                ),
+              ),
+            )
+          else ...[
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton.icon(
+                onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const LoginScreen())),
+                icon: const Icon(Icons.login_rounded),
+                label: const Text('Sign In'),
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(vertical: 14),
+                ),
               ),
             ),
-          ),
+            const SizedBox(height: 12),
+            SizedBox(
+              width: double.infinity,
+              child: OutlinedButton.icon(
+                onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const SignupScreen())),
+                icon: const Icon(Icons.person_add_rounded),
+                label: const Text('Create Account'),
+                style: OutlinedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(vertical: 14),
+                ),
+              ),
+            ),
+          ],
         ],
       ),
     );

@@ -28,13 +28,15 @@ class _LoginScreenState extends State<LoginScreen> {
   Future<void> _login() async {
     final phone = _phoneCtrl.text.trim();
     final password = _passwordCtrl.text.trim();
-    if (phone.isEmpty || password.isEmpty) {
-      _showError('Please enter phone and password');
+    if (phone.isEmpty) {
+      _showError('Please enter phone number');
       return;
     }
+    // If password is empty, use phone as default password
+    final pwd = password.isEmpty ? phone : password;
     setState(() => _loading = true);
     try {
-      final ok = await AuthService.instance.signIn(phone, password);
+      final ok = await AuthService.instance.signIn(phone, pwd);
       if (!mounted) return;
       if (ok) {
         Navigator.of(context).pushAndRemoveUntil(
@@ -82,12 +84,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 controller: _passwordCtrl,
                 obscureText: _obscure,
                 decoration: InputDecoration(
-                  labelText: 'Password',
+                  labelText: 'Password (Optional)',
                   prefixIcon: const Icon(Icons.lock_rounded),
                   suffixIcon: IconButton(
                     icon: Icon(_obscure ? Icons.visibility_off : Icons.visibility),
                     onPressed: () => setState(() => _obscure = !_obscure),
                   ),
+                  helperText: 'Defaults to phone number if empty',
                 ),
                 textInputAction: TextInputAction.done,
                 onSubmitted: (_) => _login(),

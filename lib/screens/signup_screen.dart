@@ -28,22 +28,22 @@ class _SignupScreenState extends State<SignupScreen> {
   }
 
   Future<void> _signUp() async {
-    final name = _nameCtrl.text.trim();
     final phone = _phoneCtrl.text.trim();
-    final password = _passwordCtrl.text.trim();
-    if (name.isEmpty || phone.isEmpty || password.isEmpty) {
-      _showError('Please fill all required fields');
+    if (phone.isEmpty) {
+      _showError('Please enter phone number');
       return;
     }
     setState(() => _loading = true);
     try {
+      final name = _nameCtrl.text.trim();
+      final password = _passwordCtrl.text.trim();
       final user = await AuthService.instance.signUp({
-        'full_name': name,
+        'full_name': name.isNotEmpty ? name : null,
         'phone': phone,
-        'password_hash': password,
+        'password_hash': password.isNotEmpty ? password : phone, // Use phone as default password
         'role': 'patient',
         'gender': _gender,
-        'age': int.tryParse(_ageCtrl.text.trim()),
+        'age': _ageCtrl.text.trim().isNotEmpty ? int.tryParse(_ageCtrl.text.trim()) : null,
       });
       if (!mounted) return;
       if (user != null) {
@@ -56,8 +56,9 @@ class _SignupScreenState extends State<SignupScreen> {
       }
     } catch (e) {
       _showError('Error: $e');
+    } finally {
+      if (mounted) setState(() => _loading = false);
     }
-    if (mounted) setState(() => _loading = false);
   }
 
   void _showError(String msg) {
@@ -77,7 +78,7 @@ class _SignupScreenState extends State<SignupScreen> {
             TextField(
               controller: _nameCtrl,
               decoration: const InputDecoration(
-                labelText: 'Full Name *',
+                labelText: 'Full Name (Optional)',
                 prefixIcon: Icon(Icons.person_rounded),
               ),
               textInputAction: TextInputAction.next,
@@ -97,8 +98,9 @@ class _SignupScreenState extends State<SignupScreen> {
               controller: _passwordCtrl,
               obscureText: true,
               decoration: const InputDecoration(
-                labelText: 'Password *',
+                labelText: 'Password (Optional)',
                 prefixIcon: Icon(Icons.lock_rounded),
+                helperText: 'Defaults to phone number if empty',
               ),
               textInputAction: TextInputAction.next,
             ),
@@ -106,7 +108,7 @@ class _SignupScreenState extends State<SignupScreen> {
             DropdownButtonFormField<String>(
               value: _gender,
               decoration: const InputDecoration(
-                labelText: 'Gender',
+                labelText: 'Gender (Optional)',
                 prefixIcon: Icon(Icons.wc_rounded),
               ),
               items: const [
@@ -121,7 +123,7 @@ class _SignupScreenState extends State<SignupScreen> {
             TextField(
               controller: _ageCtrl,
               decoration: const InputDecoration(
-                labelText: 'Age',
+                labelText: 'Age (Optional)',
                 prefixIcon: Icon(Icons.numbers_rounded),
               ),
               keyboardType: TextInputType.number,

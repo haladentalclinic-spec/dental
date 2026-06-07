@@ -30,6 +30,13 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
       _error = null;
     });
     try {
+      if (AuthService.instance.currentUserId == null) {
+        setState(() {
+          _error = 'Please sign in to view notifications';
+          _loading = false;
+        });
+        return;
+      }
       final clinicMap = await _service.fetchClinic();
       if (clinicMap != null) {
         final maps = await _service.fetchNotifications(userId: AuthService.instance.currentUserId);
